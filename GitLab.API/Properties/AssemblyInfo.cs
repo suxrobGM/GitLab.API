@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GitLabAPI")]
+[assembly: AssemblyTitle("GitLab.API")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("HP Inc.")]
-[assembly: AssemblyProduct("GitLabAPI")]
+[assembly: AssemblyProduct("GitLab.API")]
 [assembly: AssemblyCopyright("Copyright © HP Inc. 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("ad62d942-1837-491a-884d-d47b18538fd5")]
+[assembly: Guid("5ca1d26a-f200-43c6-9b06-91bcdcdeb5d6")]
 
 // Version information for an assembly consists of the following four values:
 //

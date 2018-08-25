@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AD62D942-1837-491A-884D-D47B18538FD5}</ProjectGuid>
+    <ProjectGuid>{5CA1D26A-F200-43C6-9B06-91BCDCDEB5D6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GitLab.API</RootNamespace>
