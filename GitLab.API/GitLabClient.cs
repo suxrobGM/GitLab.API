@@ -25,16 +25,18 @@ namespace GitLab.API
         Owner = 50 // Only valid for groups
     }
 
-    public class GitLabClient 
+    public class GitLabClient : IDisposable
     {
         private string accessToken;
         private string baseUrl;
+        private Project[] projects;
         private HttpClient request;
         private HttpResponseMessage response;
         private HttpContent content;
 
         public VersionApi VersionApi { get; set; }
         public string Token { get => accessToken; }
+        public Project[] Projects { get => projects; }
 
         public GitLabClient(string accessToken, string hostUrl = null, VersionApi versionApi = VersionApi.v4)
         {
@@ -49,15 +51,7 @@ namespace GitLab.API
             this.request = new HttpClient();
             this.request.BaseAddress = new Uri(baseUrl);
             this.request.DefaultRequestHeaders.Add("Private-Token", this.accessToken);
-
-        }
-
-        public async Task<JObject> GetProjectDataAsync(long projectId)
-        {
-            response = await request.GetAsync($"projects/{projectId}");
-            content = response.Content;
-            var jObject = JObject.Parse(await content.ReadAsStringAsync());
-            return jObject;
+            this.projects = this.GetProjectsAsync().Result;
         }
 
         public async Task<Project> GetProjectAsync(long projectId)
@@ -165,33 +159,12 @@ namespace GitLab.API
             return projectsList.ToArray();
         }
 
-        public async Task<long> GetProjectIdAsync(string projectName)
+        public void Dispose()
         {
-            response = await request.GetAsync($"projects?owned=yes");
-            content = response.Content;
-            var jArray = JArray.Parse(await content.ReadAsStringAsync());
-
-            foreach (var item in jArray)
-            {
-                if (item["name"].ToString() == projectName)
-                {
-                    return Convert.ToInt64(item["id"].ToString());
-                }
-            }
-
-            return -1;
-        }
-
-        public async Task<JArray> GetRepositoryTreeAsync(long projectID, bool recursive = false)
-        {
-            if (recursive)
-                response = await request.GetAsync($"projects/{projectID}/repository/tree?recursive=yes");
-            else
-                response = await request.GetAsync($"projects/{projectID}/repository/tree");
-
-            content = response.Content;
-            var jArray = JArray.Parse(await content.ReadAsStringAsync());
-            return jArray;
+            this.request.Dispose();
+            this.response.Dispose();
+            this.content.Dispose();
+            this.projects = null;
         }
     }
 }
