@@ -82,12 +82,12 @@ namespace GitLab.API
             project.ForksCount = Convert.ToInt64(jObject["forks_count"]);
             project.StarCount = Convert.ToInt64(jObject["star_count"]);
 
-            var strArrays = new List<string>();
+            var strsArray = new List<string>();
             foreach (var item in jObject["tag_list"].ToArray())
             {
-                strArrays.Add(item.ToString());
+                strsArray.Add(item.ToString());
             }       
-            project.TagList = strArrays.ToArray();
+            project.TagList = strsArray.ToArray();
             project.Visibility = Convert.ToString(jObject["visibility"]);
             project.CreatedDate = DateTime.Parse(jObject["created_at"].ToString());
             project.LastActivityDate = DateTime.Parse(jObject["last_activity_at"].ToString());
@@ -126,12 +126,12 @@ namespace GitLab.API
             project.ForksCount = Convert.ToInt64(jObject["forks_count"]);
             project.StarCount = Convert.ToInt64(jObject["star_count"]);
 
-            var strArrays = new List<string>();
+            var strsArray = new List<string>();
             foreach (var item in jObject["tag_list"].ToArray())
             {
-                strArrays.Add(item.ToString());
+                strsArray.Add(item.ToString());
             }
-            project.TagList = strArrays.ToArray();
+            project.TagList = strsArray.ToArray();
             project.Visibility = Convert.ToString(jObject["visibility"]);
             project.CreatedDate = DateTime.Parse(jObject["created_at"].ToString());
             project.LastActivityDate = DateTime.Parse(jObject["last_activity_at"].ToString());
