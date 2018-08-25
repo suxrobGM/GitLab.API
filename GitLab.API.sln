@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitLab.API", "GitLab.API\GitLab.API.csproj", "{4FA7877E-D268-4BD7-8C87-4FBFE712E45A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestGitLab.API", "TestGitLab.API\TestGitLab.API.csproj", "{515865A9-59CD-4649-B68D-E85E4875921E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4FA7877E-D268-4BD7-8C87-4FBFE712E45A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FA7877E-D268-4BD7-8C87-4FBFE712E45A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FA7877E-D268-4BD7-8C87-4FBFE712E45A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FA7877E-D268-4BD7-8C87-4FBFE712E45A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{515865A9-59CD-4649-B68D-E85E4875921E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{515865A9-59CD-4649-B68D-E85E4875921E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{515865A9-59CD-4649-B68D-E85E4875921E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{515865A9-59CD-4649-B68D-E85E4875921E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8492B574-948F-48DD-B88E-D30CD69D47EC}
+	EndGlobalSection
+EndGlobal
