@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiEnumerations.cs" />
+    <Compile Include="ApiTools.cs" />
     <Compile Include="GitLab.cs" />
     <Compile Include="GitLabClient.cs" />
     <Compile Include="Project.cs" />

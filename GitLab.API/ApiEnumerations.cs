@@ -29,4 +29,11 @@ namespace GitLab.API
         Tar,
         Zip
     }
+
+    public enum ProjecVisibility
+    {
+        Private,
+        Internal,
+        Public
+    }
 }

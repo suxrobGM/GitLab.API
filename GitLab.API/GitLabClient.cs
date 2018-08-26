@@ -9,16 +9,15 @@ using Newtonsoft.Json.Linq;
 namespace GitLab.API
 {
     public class GitLabClient : GitLab, IDisposable
-    {
-        private string accessToken;
-        private string baseUrl;
+    {     
         private Project[] projects;
         private HttpClient request;
         private HttpResponseMessage response;
         private HttpContent content;
 
         public VersionApi VersionApi { get; set; }
-        public string Token { get => accessToken; }
+        public string Token { get => base.accessToken; }
+        public string HostUrl { get => base.hostUrl; }
         public Project[] Projects { get => projects; }
 
         public GitLabClient(string accessToken, string hostUrl = null, VersionApi versionApi = VersionApi.v4)
@@ -27,9 +26,16 @@ namespace GitLab.API
             this.accessToken = accessToken;
 
             if (hostUrl == null)
-                baseUrl = $"https://gitlab.com/api/{VersionApi}/";
+            {
+                base.baseUrl = $"https://gitlab.com/api/{VersionApi}/";
+                base.hostUrl = "https://gitlab.com";
+            }         
             else
-                baseUrl = $"{hostUrl}/api/{VersionApi}/";
+            {
+                base.baseUrl = $"{hostUrl}/api/{VersionApi}/";
+                base.hostUrl = hostUrl;
+            }
+                
 
             this.request = new HttpClient();
             this.request.BaseAddress = new Uri(baseUrl);
@@ -65,7 +71,7 @@ namespace GitLab.API
                 strsArray.Add(item.ToString());
             }
             project.TagList = strsArray.ToArray();
-            project.Visibility = Convert.ToString(jObject["visibility"]);
+            project.Visibility = ApiTools.GetProjecVisibility(jObject["visibility"].ToString());
             project.CreatedDate = DateTime.Parse(jObject["created_at"].ToString());
             project.LastActivityDate = DateTime.Parse(jObject["last_activity_at"].ToString());
 
@@ -109,7 +115,7 @@ namespace GitLab.API
                 strsArray.Add(item.ToString());
             }
             project.TagList = strsArray.ToArray();
-            project.Visibility = Convert.ToString(jObject["visibility"]);
+            project.Visibility = ApiTools.GetProjecVisibility(jObject["visibility"].ToString());
             project.CreatedDate = DateTime.Parse(jObject["created_at"].ToString());
             project.LastActivityDate = DateTime.Parse(jObject["last_activity_at"].ToString());
 
