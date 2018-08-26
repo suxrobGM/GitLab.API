@@ -7,7 +7,7 @@ using Newtonsoft.Json.Linq;
 
 namespace GitLab.API
 {
-    public class Project
+    public class Project : GitLab
     {
         public long Id { get; internal set; }
         public string Name { get; internal set; }
@@ -17,7 +17,7 @@ namespace GitLab.API
         public string PathWithNamespace { get; internal set; }
         public string DefaultBranch { get; internal set; }
         public long ForksCount { get; internal set; }
-        public long StarCount { get; internal set; }      
+        public long StarCount { get; internal set; }
         public string[] TagList { get; internal set; }
         public DateTime CreatedDate { get; internal set; }
         public DateTime LastActivityDate { get; internal set; }
@@ -27,8 +27,8 @@ namespace GitLab.API
         public string WebUrl { get; internal set; }
         public string ReadmeUrl { get; internal set; }
         public string AvatarUrl { get; internal set; }
-        
-        
+        public Repository Repository { get; internal set; }
+
 
         internal Project() { }
     }

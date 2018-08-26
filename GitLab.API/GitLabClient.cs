@@ -8,24 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace GitLab.API
 {
-    public enum VersionApi
-    {
-        v1 = 1,
-        v2,
-        v3,
-        v4
-    }
-
-    public enum AccessLevel
-    {
-        Guest = 10,
-        Reporter = 20,
-        Developer = 30,
-        Maintainer = 40,
-        Owner = 50 // Only valid for groups
-    }
-
-    public class GitLabClient : IDisposable
+    public class GitLabClient : GitLab, IDisposable
     {
         private string accessToken;
         private string baseUrl;
@@ -80,7 +63,7 @@ namespace GitLab.API
             foreach (var item in jObject["tag_list"].ToArray())
             {
                 strsArray.Add(item.ToString());
-            }       
+            }
             project.TagList = strsArray.ToArray();
             project.Visibility = Convert.ToString(jObject["visibility"]);
             project.CreatedDate = DateTime.Parse(jObject["created_at"].ToString());
@@ -135,11 +118,11 @@ namespace GitLab.API
 
         public async Task<Project[]> GetProjectsAsync(bool ownedProjects = true)
         {
-            if(ownedProjects)
+            if (ownedProjects)
                 response = await request.GetAsync($"projects?owned=yes");
             else
                 response = await request.GetAsync($"projects?owned=no");
-            
+
             content = response.Content;
             var jArray = JArray.Parse(await content.ReadAsStringAsync());
             var idList = new List<long>();
