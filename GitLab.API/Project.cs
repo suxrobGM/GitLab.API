@@ -18,16 +18,16 @@ namespace GitLab.API
         public string DefaultBranch { get; internal set; }
         public long ForksCount { get; internal set; }
         public long StarCount { get; internal set; }
-        public string[] TagList { get; internal set; }
+        public List<string> TagList { get; internal set; }
         public DateTime CreatedDate { get; internal set; }
         public DateTime LastActivityDate { get; internal set; }
         public string SshUrl { get; internal set; }
-        public ProjecVisibility Visibility { get; internal set; }
         public string HttpUrl { get; internal set; }
         public string WebUrl { get; internal set; }
         public string ReadmeUrl { get; internal set; }
         public string AvatarUrl { get; internal set; }
         public Repository Repository { get; internal set; }
+        public ProjecVisibility Visibility { get; internal set; }
 
 
         internal Project() { }

@@ -12,30 +12,20 @@ namespace TestGitLab.API
         private static string Token = "yHe-Kh9yJ-Uqzy22H3dZ";
 
         static void Main(string[] args)
-        {
-            //try
-            //{
-                using (var client = new GitLabClient(Token))
+        {        
+            using (var client = new GitLabClient(Token))
+            {                                    
+                foreach (var project in client.Projects)
                 {
-                    //Console.WriteLine(client.GetProjectDataAsync(6500892).Result);
-                    //Project project = client.GetProjectAsync(6500892).Result;            
-                    //Console.WriteLine(project.CreatedDate);          
-                    //Console.WriteLine(client.GetProjectIdAsync("Economic Crisis").Result.ToString());
-                    //Console.WriteLine(client.GetRepositoryTreeAsync(6500892, true).Result.ToString());          
-                    
-                    foreach (var project in client.Projects)
-                    {
-                        Console.WriteLine(project.Path);
-                    }                 
-                    Console.WriteLine("Finished!");
-                    Console.ReadLine();
-                }
-            //}
-            //catch(Exception)
-            //{
-                //Console.WriteLine("Network connection error");
-                //Console.ReadLine();
-            //}
+                    Console.WriteLine(project.Path);
+                }                 
+            }                     
+
+            var myProject = GitLabClient.GetProjectAsync(8088678, "https://gitlab.com").Result;
+            
+            Console.WriteLine(myProject.Name);
+            Console.WriteLine("Finished!");
+            Console.ReadLine();
         }
     }
 }
