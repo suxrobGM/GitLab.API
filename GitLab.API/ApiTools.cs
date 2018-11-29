@@ -32,5 +32,20 @@ namespace GitLab.API
                 default:            return ArchiveFormat.TarGz;
             }
         }
+
+        public static string  GetArchiveFormat(ArchiveFormat archiveFormat)
+        {
+            switch (archiveFormat)
+            {
+                case ArchiveFormat.TarBz2:  return "tar.bz2";
+                case ArchiveFormat.Tbz:     return "tbz";
+                case ArchiveFormat.Tbz2:    return "tbz2";
+                case ArchiveFormat.Tb2:     return "tb2";
+                case ArchiveFormat.Bz2:     return "bz2";
+                case ArchiveFormat.Tar:     return "tar";
+                case ArchiveFormat.Zip:     return "zip";
+                default: return "tar.gz";
+            }
+        }
     }
 }

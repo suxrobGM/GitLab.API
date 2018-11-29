@@ -45,15 +45,16 @@
   <ItemGroup>
     <Compile Include="ApiEnumerations.cs" />
     <Compile Include="ApiTools.cs" />
-    <Compile Include="GitLab.cs" />
+    <Compile Include="By.cs" />
+    <Compile Include="ProjectsList.cs" />
     <Compile Include="GitLabClient.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
+    <Compile Include="RepositoryFile.cs" />
     <Compile Include="RepositoryTree.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="GitLabApiClassDiagram.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

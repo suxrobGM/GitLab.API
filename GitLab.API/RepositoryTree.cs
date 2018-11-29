@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GitLab.API
 {
-    public class RepositoryTree : GitLab
+    public class RepositoryTree 
     {
         public string Id { get; internal set; }
         public string Name { get; internal set; }

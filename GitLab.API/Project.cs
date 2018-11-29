@@ -7,7 +7,7 @@ using Newtonsoft.Json.Linq;
 
 namespace GitLab.API
 {
-    public class Project : GitLab
+    public class Project
     {
         public long Id { get; internal set; }
         public string Name { get; internal set; }

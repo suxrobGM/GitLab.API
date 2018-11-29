@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using GitLab.API;
 
 namespace TestGitLab.API
@@ -14,16 +15,15 @@ namespace TestGitLab.API
         static void Main(string[] args)
         {        
             using (var client = new GitLabClient(Token))
-            {                                    
+            {
                 foreach (var project in client.Projects)
                 {
                     Console.WriteLine(project.Path);
-                }                 
-            }                     
-
-            var myProject = GitLabClient.GetProjectAsync(8088678, "https://gitlab.com").Result;
-            
-            Console.WriteLine(myProject.Name);
+                }
+                var repositoryArchive = client.Projects.ElementAt(0).Repository.GetArchiveAsync(client.Projects.ElementAt(0).Id).Result;
+                File.WriteAllBytes("Test.zip", repositoryArchive);
+            }
+                     
             Console.WriteLine("Finished!");
             Console.ReadLine();
         }
